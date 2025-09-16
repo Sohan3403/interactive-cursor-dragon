@@ -9,31 +9,36 @@ body {
     position: absolute;
     width: 30px;
     height: 30px;
-    background: radial-gradient(circle, rgba(173, 255, 47, 0.😎, rgba(0, 100, 0, 0.5));
+    background: radial-gradient(circle, rgba(173, 255, 47, 0.8), rgba(0, 100, 0, 0.5));
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    
     box-shadow: 0 0 15px 5px rgba(154, 205, 50, 0.7),
                 0 0 25px 10px rgba(173, 255, 47, 0.5);
-
     transition: transform 0.1s linear, width 0.3s, height 0.3s;
 }
 
 .dragon-head {
-    box-shadow: 0 0 20px 8px rgba(255, 255, 100, 0.😎,
+    box-shadow: 0 0 20px 10px rgba(255, 255, 100, 0.8),
                 0 0 30px 15px rgba(173, 255, 47, 0.6);
 }
 
 .dragon-fins {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.7), rgba(255, 69, 0, 0.5));
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    transform: rotate(45deg);
+    animation: fins-animation 2s infinite ease-in-out;
 }
 
-.dragon-stretched {
-    transform: scaleX(1.5) scaleY(0.8);
-}
-
-.dragon-collapsed {
-    transform: scale(1);
+@keyframes fins-animation {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(5deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
 }
