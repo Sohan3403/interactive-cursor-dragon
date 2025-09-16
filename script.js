@@ -2,11 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const segmentCount = 20;
     const segments = [];
-
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     
-    let points = new Array(segmentCount).fill(null).map(() => ({ ...mouse }));
-
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let points = new Array(segmentCount).fill(null).map(() => ({...mouse}));
+    
     window.addEventListener('mousemove', (event) => {
         mouse.x = event.clientX;
         mouse.y = event.clientY;
@@ -21,43 +20,38 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (i === 7 || i === 14) {
             segment.classList.add('dragon-fins');
         }
-
+        
         body.appendChild(segment);
         segments.push(segment);
     }
+    
+    const ease = 0.15;
 
-    const easing = 0.15;
-
+    // --- এই animate ফাংশনটি যোগ করুন ---
     function animate() {
-        let leaderX = mouse.x;
-        let leaderY = mouse.y;
-        let totalDistance = 0;
+        let prevPoint = points[0];
+        
+        points[0] = {...mouse};
 
-        points.forEach((point, index) => {
-            point.x += (leaderX - point.x) * easing;
-            point.y += (leaderY - point.y) * easing;
+        for (let i = 1; i < segmentCount; i++) {
+            const point = points[i];
+            const dx = prevPoint.x - point.x;
+            const dy = prevPoint.y - point.y;
             
-            let distance = Math.sqrt(Math.pow(leaderX - point.x, 2) + Math.pow(leaderY - point.y, 2));
-            totalDistance += distance;
+            point.x += dx * ease;
+            point.y += dy * ease;
+            
+            prevPoint = point;
+        }
 
-            const segment = segments[index];
-            segment.style.left = ${point.x - segment.offsetWidth / 2}px;
-            segment.style.top = ${point.y - segment.offsetHeight / 2}px;
-
-            leaderX = point.x;
-            leaderY = point.y;
-        });
-
-        const avgDistance = totalDistance / (segmentCount - 1);
-        const isStretched = avgDistance > 15;
-
-        segments.forEach(seg => {
-            seg.classList.toggle('dragon-stretched', isStretched);
-            seg.classList.toggle('dragon-collapsed', !isStretched);
+        segments.forEach((segment, index) => {
+            const point = points[index];
+            segment.style.transform = `translate(${point.x - 15}px, ${point.y - 15}px)`;
         });
 
         requestAnimationFrame(animate);
     }
 
+    // --- এবং সবশেষে এটিকে কল করুন ---
     animate();
 });
