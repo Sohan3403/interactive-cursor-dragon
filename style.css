@@ -3,51 +3,31 @@ body {
     cursor: none;
     overflow: hidden;
     margin: 0;
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
 }
 
 .dragon-segment {
     position: absolute;
     border-radius: 50%;
-    background-color: #0f0; /* Green base */
+    /* বেসিক রঙ এবং গ্লো এফেক্ট */
+    background-color: #0f0;
     filter: blur(10px) drop-shadow(0 0 15px rgba(0, 255, 0, 0.8)) drop-shadow(0 0 25px rgba(0, 255, 0, 0.6));
-    transition: transform 0.2s linear;
+    transition: transform 0.2s linear; /* স্মুথ মুভমেন্টের জন্য */
 }
 
-/* --- মাথার জন্য বিশেষ স্টাইল --- */
+/* মাথার জন্য আলাদা ডিজাইন */
 .dragon-head {
-    background-color: #ff0; /* Yellow base */
+    background-color: #ff0;
     filter: blur(12px) drop-shadow(0 0 20px rgba(255, 255, 0, 0.9)) drop-shadow(0 0 30px rgba(255, 255, 0, 0.7));
-    position: relative; /* চোখ পজিশন করার জন্য */
 }
 
-/* --- ড্রাগনের চোখ (নতুন যোগ করা হয়েছে) --- */
-.dragon-head::before,
-.dragon-head::after {
-    content: '';
-    position: absolute;
-    top: 30%; /* চোখগুলোকে একটু উপরের দিকে রাখা হয়েছে */
-    width: 15%; /* চোখের আকার */
-    height: 15%;
-    background-color: #000;
-    border-radius: 50%;
-    filter: blur(1px);
-}
-
-.dragon-head::before {
-    left: 25%; /* বাম চোখ */
-}
-
-.dragon-head::after {
-    right: 25%; /* ডান চোখ */
-}
-
-
-/* --- পাখনার জন্য বিশেষ স্টাইল --- */
+/* পাখনার জন্য আলাদা ডিজাইন */
 .dragon-fins {
-    background-color: #f90; /* Orange base */
+    background-color: #f90;
     filter: blur(10px) drop-shadow(0 0 15px rgba(255, 153, 0, 0.8)) drop-shadow(0 0 25px rgba(255, 153, 0, 0.6));
     animation: fins-animation 1.5s infinite ease-in-out;
-    border-radius: 50% 0; /* পাখনার জন্য নতুন আকৃতি */
 }
 
 @keyframes fins-animation {
