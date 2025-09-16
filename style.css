@@ -1,3 +1,5 @@
+
+/* --- পেজের সাধারণ স্টাইল --- */
 body {
     background-color: #000;
     cursor: none;
@@ -5,6 +7,7 @@ body {
     margin: 0;
 }
 
+/* --- ড্রাগনের প্রতিটি অংশের সাধারণ স্টাইল --- */
 .dragon-segment {
     position: absolute;
     width: 30px;
@@ -18,19 +21,22 @@ body {
     transition: transform 0.1s linear, width 0.3s, height 0.3s;
 }
 
+/* --- শুধুমাত্র ড্রাগনের মাথার জন্য বিশেষ স্টাইল --- */
 .dragon-head {
-    box-shadow: 0 0 20px 10px rgba(255, 255, 100, 0.8),
+    box-shadow: 0 0 20px 10px rgba(255, 255, 100, 0.8), /* আরও উজ্জ্বল ও হলুদ আভা */
                 0 0 30px 15px rgba(173, 255, 47, 0.6);
 }
 
+/* --- শুধুমাত্র ড্রাগনের পাখনার জন্য বিশেষ স্টাইল --- */
 .dragon-fins {
-    width: 40px;
+    width: 40px; /* পাখনা একটু বড় হবে */
     height: 40px;
-    background: radial-gradient(circle, rgba(255, 165, 0, 0.7), rgba(255, 69, 0, 0.5));
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    animation: fins-animation 2s infinite ease-in-out;
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.7), rgba(255, 69, 0, 0.5)); /* কমলা রঙের হবে */
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* আকৃতি ভিন্ন হবে */
+    animation: fins-animation 2s infinite ease-in-out; /* নড়াচড়া করবে */
 }
 
+/* --- পাখনার নড়াচড়া করার জন্য অ্যানিমেশন --- */
 @keyframes fins-animation {
     0% {
         transform: rotate(0deg) scale(1);
